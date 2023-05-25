@@ -1,0 +1,14 @@
+section.artapi-layout-header-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: max-content;
+
+  div.artapi-layout-header-logo-mark {
+    width: max-content;
+  }
+
+  div.artapi-layout-header-logo-text {
+    margin-left: 10px;
+  }
+}

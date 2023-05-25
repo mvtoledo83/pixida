@@ -1,0 +1,23 @@
+footer.artapi-layout-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  padding: 0px 16px;
+  height: 48px;
+  background: #262626;
+
+  p.artapi-layout-footer-p {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    color: #636366;
+    cursor: default;
+  }
+}

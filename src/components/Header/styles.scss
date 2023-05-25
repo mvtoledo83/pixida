@@ -1,0 +1,13 @@
+header.artapi-layout-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 32px;
+  gap: 32px;
+  background: rgba(31, 31, 31, 0.4);
+  border: 1px solid #ca35f7;
+  box-shadow: 0px 40px 40px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(12px);
+  border-radius: 53px;
+}
