@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles.scss";
 import ArtPage from "../ArtPage";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import searchContext from "../../context/searchContext";
 
 const Main = () => {
   const [data, setData] = useState([]);
   const [openPage, setOpenPage] = useState(false);
   const [artItem, setArtItem] = useState("");
   const [loading, setLoading] = useState(false);
+  const { searchResult } = useContext(searchContext);
 
   useEffect(() => {
     const getArtApi = async () => {
@@ -33,6 +35,8 @@ const Main = () => {
     setArtItem(objectNumber);
   };
 
+  console.log("searchResult", searchResult);
+
   return (
     <>
       {openPage ? (
@@ -40,7 +44,9 @@ const Main = () => {
       ) : (
         <main id="artapi-layout-main" className="artapi-layout-main">
           <h1 id="artapi-layout-main-h1" className="artapi-layout-main-h1">
-            All artwork
+            {searchResult.length > 0
+              ? `Found 55255 results for: Painting`
+              : "All artwork"}
           </h1>
           {loading ? (
             <SkeletonTheme baseColor="#202020" highlightColor="#444">

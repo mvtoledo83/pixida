@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./styles.scss";
-import { searchService } from "../../../../services/base/searchService";
+import searchContext from "../../../../context/searchContext";
 
 const Search = (props: any) => {
   const [searchText, setSearchText] = useState("");
-  const [data, setData] = useState([]);
+  const { searchResult, setSearchResult } = useContext(searchContext);
 
   const getSearchService = async (text: string) => {
     try {
@@ -12,7 +12,7 @@ const Search = (props: any) => {
         `https://www.rijksmuseum.nl/api/nl/collection?key=2esrTh6M&involvedMaker=&${text}`
       );
       const result = await response.json();
-      setData(result);
+      setSearchResult(result);
     } catch (error) {
       console.error("Error:", error);
     }
