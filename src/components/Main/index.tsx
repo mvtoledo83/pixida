@@ -39,7 +39,9 @@ const Main = () => {
     setArtItem(objectNumber);
   };
 
-  const sliceInputResult = JSON.stringify(searchInput).slice(3, -3);
+  const sliceInputResult = JSON.stringify(searchInput).slice(1, -1);
+
+  console.log("searchResult", searchResult);
 
   return (
     <>

@@ -15,8 +15,7 @@ const Search = (props: any) => {
       const response = await fetch(
         `https://www.rijksmuseum.nl/api/nl/collection?key=2esrTh6M&involvedMaker=&${text}`
       );
-      const textInput = JSON.stringify(text);
-      setSearchInput(textInput);
+      setSearchInput(text);
       const result = await response.json();
       setSearchResult(result);
       const filteredCount = result.count;
