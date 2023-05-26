@@ -4,6 +4,8 @@ import ArtPage from "../ArtPage";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import searchContext from "../../context/searchContext";
+import searchCountContext from "../../context/searchCountContext";
+import searchInputContext from "../../context/searchInputContext";
 
 const Main = () => {
   const [data, setData] = useState([]);
@@ -11,6 +13,8 @@ const Main = () => {
   const [artItem, setArtItem] = useState("");
   const [loading, setLoading] = useState(false);
   const { searchResult } = useContext(searchContext);
+  const { countResult } = useContext(searchCountContext);
+  const { searchInput } = useContext(searchInputContext);
 
   useEffect(() => {
     const getArtApi = async () => {
@@ -35,7 +39,7 @@ const Main = () => {
     setArtItem(objectNumber);
   };
 
-  console.log("searchResult", searchResult);
+  const sliceInputResult = JSON.stringify(searchInput).slice(3, -3);
 
   return (
     <>
@@ -44,9 +48,11 @@ const Main = () => {
       ) : (
         <main id="artapi-layout-main" className="artapi-layout-main">
           <h1 id="artapi-layout-main-h1" className="artapi-layout-main-h1">
-            {searchResult.length > 0
-              ? `Found 55255 results for: Painting`
-              : "All artwork"}
+            {!countResult
+              ? "All artwork"
+              : `Found ${JSON.stringify(
+                  countResult
+                )} results for: ${sliceInputResult}`}
           </h1>
           {loading ? (
             <SkeletonTheme baseColor="#202020" highlightColor="#444">
