@@ -77,4 +77,54 @@ main.artapi-layout-main {
       }
     }
   }
+  div.artapi-layout-main-ul-pagination {
+    display: flex;
+    justify-content: flex-end;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0px 40px 40px rgba(0, 0, 0, 0.12);
+
+    .pagination {
+      display: flex;
+      justify-content: flex-end;
+      width: 376px;
+      list-style: none;
+    }
+
+    .pagination li {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background: #1d1d1d;
+      border: 1px solid #333333;
+      box-shadow: 0px 16px 16px 4px rgba(0, 0, 0, 0.12);
+      border-radius: 40px;
+    }
+
+    .page-link {
+      position: relative;
+      display: block;
+      padding: 15px 20px;
+      margin-left: -1px;
+      line-height: 1.25;
+      border: 1px solid #333333;
+      border-radius: 40px;
+    }
+
+    .page-link:hover {
+      cursor: pointer;
+      background-color: #e10856;
+      border-radius: 40px;
+    }
+
+    li.page-item.active > a {
+      border-color: #e10856;
+      border-radius: 40px;
+    }
+  }
 }
