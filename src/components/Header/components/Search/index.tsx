@@ -3,15 +3,18 @@ import "./styles.scss";
 import searchContext from "../../../../context/searchContext";
 import searchCountContext from "../../../../context/searchCountContext";
 import searchInputContext from "../../../../context/searchInputContext";
+import searchLoadingContext from "../../../../context/searchLoadingContext";
 
 const Search = (props: any) => {
   const [searchText, setSearchText] = useState("");
   const { setSearchResult } = useContext(searchContext);
   const { setCountResult } = useContext(searchCountContext);
   const { setSearchInput } = useContext(searchInputContext);
+  const { setSearchLoading } = useContext(searchLoadingContext);
 
   const getSearchService = async (text: string) => {
     try {
+      setSearchLoading(true);
       const response = await fetch(
         `https://www.rijksmuseum.nl/api/nl/collection?key=2esrTh6M&involvedMaker=&${text}`
       );
@@ -20,6 +23,7 @@ const Search = (props: any) => {
       setSearchResult(result);
       const filteredCount = result.count;
       setCountResult(filteredCount);
+      setSearchLoading(false);
     } catch (error) {
       console.error("Error:", error);
     }
