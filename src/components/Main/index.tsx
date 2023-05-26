@@ -119,9 +119,9 @@ const Main = () => {
                     <ReactPaginate
                       previousLabel={"<"}
                       nextLabel={">"}
-                      pageCount={10} // Total de páginas disponíveis
-                      marginPagesDisplayed={2} // Número de páginas visíveis antes e depois da página atual
-                      pageRangeDisplayed={1} // Número de páginas visíveis no meio da paginação
+                      pageCount={10} 
+                      marginPagesDisplayed={2} 
+                      pageRangeDisplayed={1}
                       //onPageChange={handlePageChange} // Função chamada quando a página é alterada
                       containerClassName={"pagination"}
                       breakLinkClassName="page-link"
