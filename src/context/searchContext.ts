@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-type ApiResponse = {
+interface ApiResponse {
   artObjects: [
     hasImage: Boolean,
     headerImage: [],
@@ -15,7 +15,7 @@ type ApiResponse = {
   count: number;
 };
 
-type ApiContextType = {
+interface ApiContextType {
   searchResult: ApiResponse[];
   setSearchResult: (data: ApiResponse[]) => void;
 };
