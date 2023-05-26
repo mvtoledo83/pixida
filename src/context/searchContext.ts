@@ -1,8 +1,7 @@
 import { createContext } from "react";
-
-interface ApiResponse {
+type SearchResponse = {
   artObjects: [
-    hasImage: Boolean,
+    hasImage: boolean,
     headerImage: [],
     id: string,
     longTitle: string,
@@ -12,14 +11,13 @@ interface ApiResponse {
     title: string,
     webImage: [url: string]
   ];
-  count: number;
 };
 
-interface ApiContextType {
-  searchResult: ApiResponse[];
-  setSearchResult: (data: ApiResponse[]) => void;
-};
+interface SearchContextInterface {
+  searchResult: SearchResponse[];
+  setSearchResult: (data: SearchResponse[]) => void;
+}
 
-const searchContext = createContext<ApiContextType | undefined>(undefined);
+const searchContext = createContext<SearchContextInterface | undefined>(undefined);
 
 export default searchContext;
