@@ -7,25 +7,30 @@ import searchLoadingContext from "../../../../context/searchLoadingContext";
 
 const Search = (props: any) => {
   const [searchText, setSearchText] = useState("");
+  const [error, setError] = useState("");
   const { setSearchResult } = useContext(searchContext);
   const { setCountResult } = useContext(searchCountContext);
   const { setSearchInput } = useContext(searchInputContext);
   const { setSearchLoading } = useContext(searchLoadingContext);
 
   const getSearchService = async (text: string) => {
-    try {
-      setSearchLoading(true);
-      const response = await fetch(
-        `https://www.rijksmuseum.nl/api/nl/collection?key=2esrTh6M&involvedMaker=&${text}`
-      );
-      setSearchInput(text);
-      const result = await response.json();
-      setSearchResult(result);
-      const filteredCount = result.count;
-      setCountResult(filteredCount);
-      setSearchLoading(false);
-    } catch (error) {
-      console.error("Error:", error);
+    if (!text) {
+      setError("Please type something");
+    } else {
+      try {
+        setSearchLoading(true);
+        const response = await fetch(
+          `https://www.rijksmuseum.nl/api/nl/collection?key=2esrTh6M&involvedMaker=&${text}`
+        );
+        setSearchInput(text);
+        const result = await response.json();
+        setSearchResult(result);
+        const filteredCount = result.count;
+        setCountResult(filteredCount);
+        setSearchLoading(false);
+      } catch (error) {
+        console.error("Error:", error);
+      }
     }
   };
 
@@ -38,9 +43,12 @@ const Search = (props: any) => {
         id="artapi-layout-header-search-input"
         className="artapi-layout-header-search-input"
         type="text"
-        placeholder="Please type in your search"
-        onChange={(e) => setSearchText(e.target.value)}
-      ></input>
+        placeholder={error ? error : "Please type in your search"}
+        onChange={(e) => {
+          setSearchText(e.target.value);
+          setError("");
+        }}
+      />
       <button
         id="artapi-layout-header-search-button"
         className="artapi-layout-header-search-button"
