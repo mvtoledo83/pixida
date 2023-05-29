@@ -37,7 +37,7 @@ const Main = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://www.rijksmuseum.nl/api/nl/collection?key=2esrTh6M&p=1&ps=12`
+          `https://www.rijksmuseum.nl/api/en/collection?key=2esrTh6M&role=schilder`
         );
         const result = await response.json();
         const artData = result.artObjects;
