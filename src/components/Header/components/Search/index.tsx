@@ -15,12 +15,15 @@ const Search = (props: any) => {
 
   const getSearchService = async (text: string) => {
     if (!text) {
+      document.getElementById(
+        "artapi-layout-header-search-input"
+      ).style.background = "#ff000022";
       setError("Please type something");
     } else {
       try {
         setSearchLoading(true);
         const response = await fetch(
-          `https://www.rijksmuseum.nl/api/nl/collection?key=2esrTh6M&involvedMaker=&${text}`
+          `https://www.rijksmuseum.nl/api/en/collection?key=2esrTh6M&search?q=${text}`
         );
         setSearchInput(text);
         const result = await response.json();
@@ -47,6 +50,9 @@ const Search = (props: any) => {
         onChange={(e) => {
           setSearchText(e.target.value);
           setError("");
+          document.getElementById(
+            "artapi-layout-header-search-input"
+          ).style.background = "inherit";
         }}
       />
       <button
