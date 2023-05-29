@@ -30,6 +30,7 @@ const Main = () => {
   const { countResult } = useContext(searchCountContext);
   const { searchInput } = useContext(searchInputContext);
   const { searchLoading } = useContext(searchLoadingContext);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     const getArtApi = async () => {
@@ -55,6 +56,48 @@ const Main = () => {
   };
 
   const sliceInputResult = JSON.stringify(searchInput).slice(1, -1);
+  const itemsPerPage = 9;
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const renderItems = () => {
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentItems = data.slice(startIndex, endIndex);
+
+    return currentItems.map((artItems) => (
+      <li
+        id="artapi-layout-main-ul-li"
+        className="artapi-layout-main-ul-li"
+        key={artItems.id}
+      >
+        <article
+          id="artapi-layout-main-ul-li-article"
+          className="artapi-layout-main-ul-li-article"
+          style={{
+            backgroundImage: `url(${artItems.webImage.url})`,
+          }}
+          onClick={() => openArtPage(artItems.objectNumber)}
+        >
+          <small
+            id="artapi-layout-main-ul-li-article-small"
+            className="artapi-layout-main-ul-li-article-small"
+          >
+            {artItems.principalOrFirstMaker}
+          </small>
+          <h2
+            id="artapi-layout-main-ul-li-article-h2"
+            className="artapi-layout-main-ul-li-article-h2"
+          >
+            {artItems.title}
+          </h2>
+        </article>
+      </li>
+    ));
+  };
 
   return (
     <>
@@ -81,35 +124,7 @@ const Main = () => {
                     id="artapi-layout-main-ul"
                     className="artapi-layout-main-ul"
                   >
-                    {data.map((artItems) => (
-                      <li
-                        id="artapi-layout-main-ul-li"
-                        className="artapi-layout-main-ul-li"
-                        key={artItems.id}
-                      >
-                        <article
-                          id="artapi-layout-main-ul-li-article"
-                          className="artapi-layout-main-ul-li-article"
-                          style={{
-                            backgroundImage: `url(${artItems.webImage.url})`,
-                          }}
-                          onClick={() => openArtPage(artItems.objectNumber)}
-                        >
-                          <small
-                            id="artapi-layout-main-ul-li-article-small"
-                            className="artapi-layout-main-ul-li-article-small"
-                          >
-                            {artItems.principalOrFirstMaker}
-                          </small>
-                          <h2
-                            id="artapi-layout-main-ul-li-article-h2"
-                            className="artapi-layout-main-ul-li-article-h2"
-                          >
-                            {artItems.longTitle}
-                          </h2>
-                        </article>
-                      </li>
-                    ))}
+                    {renderItems()}
                   </ul>
 
                   <div
@@ -119,10 +134,10 @@ const Main = () => {
                     <ReactPaginate
                       previousLabel={"<"}
                       nextLabel={">"}
-                      pageCount={10} 
-                      marginPagesDisplayed={2} 
+                      pageCount={pageCount}
+                      marginPagesDisplayed={2}
                       pageRangeDisplayed={1}
-                      //onPageChange={handlePageChange} // Função chamada quando a página é alterada
+                      onPageChange={handlePageChange} // Função chamada quando a página é alterada
                       containerClassName={"pagination"}
                       breakLinkClassName="page-link"
                       pageClassName="page-item"
