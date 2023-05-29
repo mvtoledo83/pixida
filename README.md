@@ -1,32 +1,32 @@
-# Desafio PIXIDA
+# PIXIDA Challenge
 
-Aplicação enviada pela empresa Pixida, visando a percepção dos conhecimentos em Front-End Developing
+Application submitted by Pixida company, aiming to assess Front-End Developing skills.
 
-## Características da aplicação
+## Application Features
 
-Esta solução foi desenvolvida através do CLI do Single SPA (Microfrontend), utilizando a linguagem TypeScript, e o Framework React JS.
+This solution was developed using the Single SPA CLI (Microfrontend), utilizing the TypeScript language and the React JS framework.
 
-## Instalação
+## Installation
 
-Para ver a aplicação em funcionamento: 
+To see the application in action:
 
-1 - baixe o arquivo .zip para o seu computador;
+1 - Download the .zip file to your computer.
 
-2 - Abra a pasta em um editor de código fonte de sua preferência e execute o comando a seguir para instalar os módulos da aplicação:
+2 - Open the folder in a code editor of your preference and execute the following command to install the application modules:
 
 ```bash
 npm i
 ```
 
-3 - Após a instalação dos módulos, execute o comando a seguir para rodar a aplicação em modo "standalone":
+3 - After the module installation, run the following command to start the application in "standalone" mode:
 
 ```bash
 npm run start:standalone
 ```
 
-## Agradecimentos
+## Acknowledgements
 
-Desde já agradeço pela oportundade e pelo desafio, que foi imensamente gratificante.
+I would like to express my gratitude for the opportunity and the challenge, which was immensely rewarding.
 
 ## Contato
 
