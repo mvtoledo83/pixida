@@ -26,7 +26,7 @@ npm run start:standalone
 
 ## Acknowledgements
 
-I would like to express my gratitude for the opportunity and the challenge, which was immensely rewarding.
+I would like to express my gratitude for the opportunity and the challenge, which was immensely rewarding for me.
 
 ## Contato
 
